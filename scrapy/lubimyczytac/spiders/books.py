@@ -1,5 +1,7 @@
 import scrapy
 
+limit_pages_100 = True
+
 class Books(scrapy.Item):
     book_name        = scrapy.Field()
     type             = scrapy.Field()
@@ -9,9 +11,21 @@ class Books(scrapy.Item):
 class BooksSpider(scrapy.Spider):
     name = 'books'
     allowed_domains = ['lubimyczytac.pl']
+
     try:
         with open("links_list_books.csv", "rt") as f:
-            start_urls = [url.strip() for url in f.readlines()][1:]
+
+            # condition for limitting number of crawled pages to 100
+            if  limit_pages_100 == True:
+                start_urls=[] 
+                page_no = 0  # variable for counting crawled pages
+                for url in f.readlines():
+                    if page_no <= 100:
+                        start_urls.append(url.strip())
+                        page_no+=1
+                start_urls=start_urls[1:]
+            # if condition limit_pages_100 is False - crawling all pages
+            else: start_urls = [url.strip() for url in f.readlines()][1:]
     except:
         start_urls = []
 
