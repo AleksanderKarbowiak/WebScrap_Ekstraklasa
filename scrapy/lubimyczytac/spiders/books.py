@@ -24,7 +24,7 @@ class BooksSpider(scrapy.Spider):
                         start_urls.append(url.strip())
                         page_no+=1
                 start_urls=start_urls[1:]
-            # if condition limit_pages_100 is False - crawling all pages
+            # if condition limit_pages_100 is False - crawling through all pages
             else: start_urls = [url.strip() for url in f.readlines()][1:]
     except:
         start_urls = []
