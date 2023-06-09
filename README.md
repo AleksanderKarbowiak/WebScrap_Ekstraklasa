@@ -14,3 +14,9 @@ Running selenium:
 1. Install selenium and pandas.
 2. Set limitLinks flag to TRUE (if you want to scrap 100 links) or FALSE (if you want to scrap all the links)
 3. Run script by command line and have fun :)
+
+Running Beautiful Soup: 
+1. Install urllib, BeautifulSoup, pandas, time and matplotlib.pyplot.
+2. If needed, modify the variable limitLinks. Setting to 'True' limits the scrapping to the first 5 pages (100 links), and setting to False, scraps all pages. 
+3. Run the script. 
+4. File books_links.csv contains links to the books and file books_data.csv contains detailed data for each book.
